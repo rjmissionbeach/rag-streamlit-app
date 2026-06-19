@@ -180,7 +180,26 @@ def ask_openrouter(
         "Do not use outside knowledge. Do not guess or speculate."
     )
 
-    user_prompt = f"Context passages:\n\n{context}\n\nQuestion: {question}"
+    user_prompt = f"""
+You are a financial research assistant.
+
+Answer the user's question using ONLY the supplied context.
+
+Instructions:
+- Give a direct answer first.
+- Use specific numbers when available.
+- Be concise.
+- If the answer is not contained in the context, say so.
+- Do not copy large chunks of text from the source documents.
+- Synthesize information from multiple passages when appropriate.
+
+Context passages:
+
+{context}
+
+Question:
+{question}
+"""
 
     for attempt in range(max_retries):
         try:
