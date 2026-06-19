@@ -1,0 +1,5 @@
+streamlit
+pypdf
+scikit-learn
+requests
+beautifulsoup4
