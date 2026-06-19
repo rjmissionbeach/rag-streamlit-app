@@ -336,14 +336,15 @@ if question:
                 answer = ask_openrouter(question, passages, api_key, model_name)
             st.markdown(answer)
 
-            with st.expander("Retrieved passages"):
-                if passages:
-                    for p in passages:
-                        st.markdown(f"**{p['source']}** — score `{p['score']:.3f}`")
-                        st.text(p["text"][:1000])
-                else:
-                    st.write("No passages met the retrieval threshold.")
+# Uncomment this block only when debugging retrieval.
+# with st.expander("Retrieved passages"):
+#     if passages:
+#         for p in passages:
+#             st.markdown(f"**{p['source']}** — score `{p['score']:.3f}`")
+#             st.text(p["text"][:1000])
+#     else:
+#         st.write("No passages met the retrieval threshold.")
 
     st.session_state.messages.append(
-        {"role": "assistant", "content": answer, "passages": passages}
+        {"role": "assistant", "content": answer}
     )
